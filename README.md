@@ -17,7 +17,7 @@ optional arguments:
   -c cnt      process (thread) count, default 10, too many processes may cause connection problems
   -v          verbose mode
   -s          stop on first user found
-  -p P        proxy
+  -p          proxy
 ~~~
 
 
