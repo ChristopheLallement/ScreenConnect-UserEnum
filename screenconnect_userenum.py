@@ -74,7 +74,7 @@ if __name__ == "__main__":
     parser.add_argument("-c", metavar="cnt", type=int, default=10, help="process (thread) count, default 10, too many processes may cause connection problems")
     parser.add_argument("-v", action="store_true", help="verbose mode")
     parser.add_argument("-s", action="store_true", help="stop on first user found")
-    parser.add_argument("-p", type=str, help="proxy")
+    parser.add_argument("-p", metavar="proxy", type=str, help="socks4/5 http/https proxy, ex: socks5://127.0.0.1:9050")
     args = parser.parse_args()
 
     # Arguments to simple variables
