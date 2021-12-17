@@ -4,7 +4,7 @@ ScreenConnect 6.3.13446.6374-2666439717 user enumeration tool
 
 ## How To
 ~~~
-usage: screenconnect_userenum.py [-h] [-c cnt] [-v] [-s] [-p P] url wordlist
+usage: screenconnect_userenum.py [-h] [-c cnt] [-v] [-s] [-p proxy] url wordlist
 
 http://example.com/Login user enumeration tool
 
@@ -17,7 +17,7 @@ optional arguments:
   -c cnt      process (thread) count, default 10, too many processes may cause connection problems
   -v          verbose mode
   -s          stop on first user found
-  -p          proxy
+  -p proxy    socks4/5 http/https proxy, ex: socks5://127.0.0.1:9050
 ~~~
 
 
