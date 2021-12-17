@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 #
-# ScreenConnect/6.3.13446.6374-2666439717 user enumeration tool
+# ScreenConnect user enumeration tool
+#
+# works on verions: 6.4.15787.6556-1472470634
+#                   6.3.13446.6374-2666439717
+#                   maybe on other
 # czz78
 #
 from multiprocessing import Process, Queue
@@ -92,7 +96,7 @@ if __name__ == "__main__":
 |  | |__  |__  |__)   |__  |\ | |  | |\/|
 |__| ___| |___ |  \   |___ | \| |__| |  |
 
-ScreenConnect/6.3.13446.6374-2666439717    POC by czz78 :)
+ScreenConnect POC by czz78 :)
 
     """+ bcolors.ENDC);
     print("URL: "+url)
