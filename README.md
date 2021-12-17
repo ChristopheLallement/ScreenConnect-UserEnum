@@ -1,6 +1,11 @@
 # ScreenConnect-UserEnum
 
-ScreenConnect 6.3.13446.6374-2666439717 user enumeration tool
+ScreenConnect user enumeration tool
+
+works on verions: 
+6.4.15787.6556-1472470634
+6.3.13446.6374-2666439717
+maybe on other
 
 ## How To
 ~~~
