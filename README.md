@@ -2,10 +2,11 @@
 
 ScreenConnect user enumeration tool
 
+##  CVE-2019-16516
+
 ~~~
-works on verions: 6.4.15787.6556-1472470634
+Tried on verions: 6.4.15787.6556-1472470634
                   6.3.13446.6374-2666439717
-                  maybe on other
 ~~~
 
 ## How To
