@@ -1,6 +1,7 @@
 # ScreenConnect-UserEnum
 
-ScreenConnect user enumeration tool
+ConnectWise also known as ScreenConnect has a userenum vulnerability
+This is an user enumeration tool for that2
 
 ##  CVE-2019-16516
 
