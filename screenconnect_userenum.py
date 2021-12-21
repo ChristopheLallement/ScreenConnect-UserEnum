@@ -52,7 +52,7 @@ def process_enum(queue, found_queue, wordlist, url, payload, failstr, verbose, p
                     user_payload[key] = user
 
             dataraw = "".join(['%s=%s&' % (key, value) for (key, value) in user_payload.items()])[:-1]
-            headers={"Accept": "*/*" , "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "curl/7.74.0"}
+            headers={"Accept": "*/*" , "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"}
 
             req = requests.request('POST',url,headers=headers,data=dataraw, proxies=proxies)
 
