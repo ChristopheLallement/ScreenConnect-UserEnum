@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 #
 # Exploit Title: ConnectWise Control is vulnerable to a user enumeration vulnerability, allowing an unauthenticated attacker to determine with certainty if an account exists for a given username.
 # Date: Dec 17, 2021
