@@ -4,6 +4,7 @@ ConnectWise also known as ScreenConnect has a userenum vulnerability.
 This is an user enumeration tool for that
 
 ##  CVE-2019-16516
+vulnerable <= 19.2.24707 ??? didn't really understand if they fixed in upper version https://docs.connectwise.com/ConnectWise_Control_Documentation/ConnectWise_Control_release_notes/Release_notes_archive#ConnectWise_Control_2019.5
 
 ~~~
 Tried on verions: 6.4.15787.6556-1472470634
