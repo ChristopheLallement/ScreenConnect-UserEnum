@@ -1,10 +1,16 @@
-#!/usr/bin/env python3
+#
+# Exploit Title: ConnectWise Control is vulnerable to a user enumeration vulnerability, allowing an unauthenticated attacker to determine with certainty if an account exists for a given username.
+# Date: Dec 17, 2021
+# Exploit Author: Luca Cuzzolin aka czz78
+# Vendor Homepage: https://www.connectwise.com/
+# Version: vulnerable <= 19.2.24707 ??? didn't really understand if they fixed in upper version https://docs.connectwise.com/ConnectWise_Control_Documentation/ConnectWise_Control_release_notes/Release_notes_archive#ConnectWise_Control_2019.5
+# CVE : CVE-2019-16516
 #
 # ScreenConnect user enumeration tool
 #
-# CVE-2019-16516
-#
 # POC by czz78
+#
+# https://github.com/czz/ScreenConnect-UserEnum
 #
 from multiprocessing import Process, Queue
 from statistics import mean
